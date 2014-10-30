@@ -1,0 +1,227 @@
+<div class="form">
+
+
+<?php $form = $this->beginWidget('GxActiveForm', array(
+	'id' => 'billing-details-form',
+	'enableAjaxValidation' => false,
+));
+?>
+
+	<p class="note">
+		<?php echo Yii::t('app', 'Fields with'); ?> <span class="required">*</span> <?php echo Yii::t('app', 'are required'); ?>.
+	</p>
+
+	<?php echo $form->errorSummary($model); ?>
+	
+<table width='60%'>
+	<tr>
+		<td>
+<?php
+
+
+		$this->widget (
+        'ext.clonnableFields.ClonnableFields',
+        array (
+            'models'=>$model, //required, one to many model relation or array
+            'rowGroupName'=>'Mayors', //required, all fields will be with this key number
+            'startRows'=>1, //optional, default: 1 - The number of rows at widget start
+            'labelsMode'=>2, //optional, default: 1 - (0 - never, 1 - always, 2 - only if rows exist)
+            'addButtonLabel' => '<i class="icon-plus"></i> Add Medical Act', //optionall, default: "Add"
+            'removeButtonLabel' => '<i class="icon-remove"></i>', //optional, default: "Remove"
+            'removeButtonHtmlOptions' => array('class'=>'pull-right'), //optional
+            'fields'=>array( //required
+                //---------first field------------------------
+               //---------third field------------------------
+                array(
+                    'label'=>array(
+                        'title'=>'Invoice Number',
+                        'htmlOptions'=>array('data-toggle' => 'popover', 'title'=>'Simple text field', 'data-content' => 'Enter mayor\'s name (plain text)', 'data-trigger' => 'hover', 'data-placement' => 'top'),
+                    ),
+                    'field'=>array(
+                        'class'=>'TemplateTextField',
+                        'attribute'=>'idinvoice', //required, model attribute or field name
+                        'htmlOptions'=>array('class'=>'span12', 'maxlength'=>'128'),
+                    ),
+                    'fieldHtmlOptions' => array('class'=>'span3'),
+                ),
+              
+          
+               
+                //---------third field------------------------
+                array(
+                    'label'=>array(
+                        'title'=>'Medical',
+                        'htmlOptions'=>array('data-toggle' => 'popover', 'title'=>'Simple text field', 'data-content' => 'Enter mayor\'s name (plain text)', 'data-trigger' => 'hover', 'data-placement' => 'top'),
+                    ),
+                    'field'=>array(
+                        'class'=>'TemplateTextField',
+                        'attribute'=>'idmedical', //required, model attribute or field name
+                        'htmlOptions'=>array('class'=>'span12', 'maxlength'=>'128'),
+                    ),
+                    'fieldHtmlOptions' => array('class'=>'span3'),
+                ),
+                
+               //---------third field------------------------
+                array(
+                    'label'=>array(
+                        'title'=>'Price',
+                        'htmlOptions'=>array('data-toggle' => 'popover', 'title'=>'Simple text field', 'data-content' => 'Enter mayor\'s name (plain text)', 'data-trigger' => 'hover', 'data-placement' => 'top'),
+                    ),
+                    'field'=>array(
+                        'class'=>'TemplateTextField',
+                        'attribute'=>'price', //required, model attribute or field name
+                        'htmlOptions'=>array('class'=>'span12', 'maxlength'=>'128'),
+                    ),
+                    'fieldHtmlOptions' => array('class'=>'span3'),
+                ),
+                //---------third field------------------------
+                array(
+                    'label'=>array(
+                        'title'=>'Quantity',
+                        'htmlOptions'=>array('data-toggle' => 'popover', 'title'=>'Simple text field', 'data-content' => 'Enter mayor\'s name (plain text)', 'data-trigger' => 'hover', 'data-placement' => 'top'),
+                    ),
+                    'field'=>array(
+                        'class'=>'TemplateTextField',
+                        'attribute'=>'quantity', //required, model attribute or field name
+                        'htmlOptions'=>array('class'=>'span12', 'maxlength'=>'128'),
+                    ),
+                    'fieldHtmlOptions' => array('class'=>'span3'),
+              ),
+            ),
+        )
+    );
+
+?>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2><?php
+echo GxHtml::submitButton(Yii::t('app', 'Save'));
+$this->endWidget();
+?>
+</div></td>
+	</tr>
+	<tr>
+		 <td align='center'>
+		 	<u><h2>Bills</h2></u>
+		 </td>
+	</tr>
+<tr>
+	<td colspan = 2 align='left'>
+<?php 
+
+$this->widget('bootstrap.widgets.TbGridView',array(
+	'id'=>'grid1',
+	'dataProvider'=>BillingDetails::model()->bill_invoice(),
+        'type'=>'striped bordered condensed',
+        'template'=>'{summary}{pager}{items}{pager}',
+       
+	'columns'=>array(
+		'id',
+		array( 
+                 'class' => 'editable.EditableColumn',
+                  'name' => 'idmedical',
+                  'editable' => array(
+                   'type'     => 'select',
+                    'url'      => $this->createUrl('billingDetails/updateBooster'),
+                   // 'source'=>Traitement::model()->findAllAttributes('id', 'medical_act'),
+                    //'source'    => Traitement::model()->findAll(), 'id', 'medical_act',
+                    'source'    => Editable::source(Traitement::model()->findAll(), 'id', 'medical_act'),
+
+                   
+                  ),
+          ),
+		array( 
+                 'class' => 'editable.EditableColumn',
+                  'name' => 'quantity',
+                  
+                  'editable' => array(
+                  	'mode'      => 'inline',
+                   'type'     => 'text',
+                    'url'      => $this->createUrl('billingDetails/updateBooster'),
+                    'success' => 'js: function(data) {
+                        $.fn.yiiGridView.update("grid1");
+						$.fn.yiiGridView.update("grid2");
+                }',
+                   
+                  ),
+          ),
+		array( 
+                 'class' => 'editable.EditableColumn',
+                  'name' => 'price',
+            
+                  'editable' => array(
+                  	'mode'      => 'inline',
+                   'type'     => 'text',
+                    'url'      => $this->createUrl('billingDetails/updateBooster'),
+                    'success' => 'js: function(data) {
+						
+						$.fn.yiiGridView.update("grid1");
+						$.fn.yiiGridView.update("grid2");
+                     
+                }',
+                   
+                  ),
+          ),
+		array(
+			    'class' => 'editable.EditableColumn',
+				'name'=>'total',
+				'header'=>'Total',
+				'editable' => array(
+				 'success' => 'js: function(data) {
+                  
+                }',
+                ),
+		),
+		array(
+			    'class' => 'editable.EditableColumn',
+				'name'=>'companyPrice',
+				'header'=>'85%',
+				'editable' => array(
+				 'success' => 'js: function(data) {
+                  
+                }',
+                ),
+		),
+		array(
+			     'class' => 'editable.EditableColumn',
+				'name'=>'insurencePrice',
+				'header'=>'15%',
+				'editable' => array(
+				 'success' => 'js: function(data) {
+				 	
+                }',
+                ),
+		),
+	     
+	),
+)); ?>
+	</td>
+</tr>
+
+<tr>
+	<td colspan = 2 align='right'>
+<?php 
+$this->widget('bootstrap.widgets.TbGridView',array(
+	'id'=>'grid2',
+	'dataProvider'=>BillingDetails::model()->sum_invoice(),
+        'type'=>'striped bordered condensed',
+         'summaryText' => '', // 1st way
+         'template' => '{items}{pager}', // 2nd way
+
+	'columns'=>array(
+
+		array(
+				'name'=>'paid',
+				'header'=>'You should pay this amount',
+				'htmlOptions'=>array('style'=>'text-align: right;font-size:18px'),
+		),
+      
+	),
+)); ?>
+	</td>
+</tr>
+</table>
+<?php
+//$model = new BillingDetails;
+
