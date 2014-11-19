@@ -59,7 +59,7 @@ abstract class BaseMembers extends GxActiveRecord {
 			array('cardnumber', 'length', 'max'=>15),
 			array('firstname, middlename, lastname, phonenumber', 'length', 'max'=>20),
 			array('sex', 'length', 'max'=>1),
-			array('issuedate', 'type', 'type'=>'date', 'dateFormat'=>'dd/MM/yy'),
+			array('issuedate, expireddate, birthday', 'date', 'format' => 'yyyy-mm-dd', 'allowEmpty' => true),
 			array('cardnumber', 'unique'),
 			array('address', 'length', 'max'=>30),
 			array('email, photo', 'length', 'max'=>50),
