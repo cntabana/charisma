@@ -26,7 +26,7 @@ abstract class BaseSector extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Sector|Sectors', $n);
+		return Yii::t('app', 'Department|Departments', $n);
 	}
 
 	public static function representingColumn() {
@@ -56,7 +56,7 @@ abstract class BaseSector extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'sector' => Yii::t('app', 'Sector'),
+			'sector' => Yii::t('app', 'Department'),
 			'iddistrict' => null,
 			'iddistrict0' => null,
 		);

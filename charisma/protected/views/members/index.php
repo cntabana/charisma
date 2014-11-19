@@ -1,5 +1,5 @@
 <?php
-$model = new MembersBoot;
+$model = new Members;
 $this->breadcrumbs=array(
 	'Members',
 );
@@ -59,12 +59,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'itemsCssClass' => 'table-bordered items',
     'dataProvider' => $model->search(),
     'columns'=>array(
-        array(
-           'class' => 'editable.EditableColumn',
-           'name' => 'id',
-           'headerHtmlOptions' => array('style' => 'width: 30px'),
-                         
-        ),
+      
          array( 
             //'class' => 'editable.EditableColumn',
             'header'=>'Membership Card',
@@ -92,36 +87,26 @@ $this->widget('bootstrap.widgets.TbGridView', array(
                 'placement' => 'right',
             )
           ),
+        
           array( 
             'class' => 'editable.EditableColumn',
-            'name' => 'issuedate',
-  
-              'editable' => array(
-                  'type'          => 'date',
-                  'viewformat'    => 'dd.mm.yyyy',
-                  'url'           => $this->createUrl('members/UpdateBooster'),
-                  'placement'     => 'right',
-              )
-          ),  
-          array( 
-            'class' => 'editable.EditableColumn',
-            'header'=>'Issued Date',
             'name' => 'issuedate',
        
-              'editable' => array(
-              'type'          => 'combodate',
-              'url'           => $this->createUrl('members/UpdateBooster'),
-              'placement'     => 'right',
-              'format'      => 'YYYY-MM-DD', //in this format date sent to server  
-              'viewformat'  => 'DD/MM/YYYY', //in this format date is displayed
-              'template'    => 'DD / MMM / YYYY ', //template for dropdowns
-               'combodate'   => array('minYear' => 1920, 'maxYear' => 2099), 
-              )
+           'editable' => array(
+            'type'          => 'combodate',
+            'viewformat'    => 'dd.mm.yyyy',
+            'url'           => $this->createUrl('members/UpdateBooster'),
+            'placement'     => 'right',
+            'format'      => 'YYYY-MM-DD', //in this format date sent to server  
+            'viewformat'  => 'DD/MM/YYYY', //in this format date is displayed
+            'template'    => 'DD / MMM / YYYY ', //template for dropdowns
+            'combodate'   => array('minYear' => 1920, 'maxYear' => 2099), 
+             )
+
           ),  
 
           array( 
             'class' => 'editable.EditableColumn',
-            'header'=>'Expire Date',
             'name' => 'expireddate',
                  'editable' => array(
                   'type'          => 'combodate',
@@ -136,7 +121,6 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 
            array( 
             'class' => 'editable.EditableColumn',
-            'header'=>'Birthday',
             'name' => 'birthday',
                  'editable' => array(
                   'type'          => 'combodate',
@@ -168,7 +152,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
               'editable' => array(
                   'type'     => 'select',
                   'url'      => $this->createUrl('members/updateBooster'),
-                 'source'=>$model->getType(),
+                 'source'=>$model->getTypeEdit(),
        ),
 ),
 
@@ -179,7 +163,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
               'editable' => array(
                   'type'     => 'select',
                   'url'      => $this->createUrl('members/updateBooster'),
-                 'source'=>$model->getStatus(),
+                 'source'=>$model->getStatusEdit(),
                  'placement'     => 'left',
                  'options'  => array(    //custom display 
                      'display' => 'js: function(value, sourceData) {

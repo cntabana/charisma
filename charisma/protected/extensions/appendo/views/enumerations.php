@@ -17,7 +17,7 @@ $model = new BillingDetails;
 	
             <td><?php  echo CHtml::hiddenField('idinvoice[]',$_GET['idinvoice'],array('style'=>'width:90px','readonly'=>true)); ?></td>
             <td><?php  echo CHtml::dropDownList('idmedical[]','',
-                        Chtml::listData(Traitement::model()->findAllByAttributes(array('idservice'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
+                        Chtml::listData(Traitement::model()->findAllByAttributes(array('type'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
                         array('empty'=>'Select Traitment'));
 
             ?></td>
@@ -30,7 +30,7 @@ $model = new BillingDetails;
     			<td><?php echo CHtml::textField('idinvoice[]',$model->idinvoice[$i],array('style'=>'width:20px')); ?></td>
                 <td><?php //echo CHtml::textField('idmedical[]',$model->idmedical[$i],array('style'=>'width:90px')); ?>
                     <?php  echo CHtml::dropDownList( 'idmedical[]',$model->idmedical[$i],
-                         Chtml::listData(Traitement::model()->findAllByAttributes(array('idservice'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
+                         Chtml::listData(Traitement::model()->findAllByAttributes(array('type'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
                         array('empty'=>'Select Traitment'));
 
             ?>
@@ -42,7 +42,7 @@ $model = new BillingDetails;
 		<tr>
 			<td><?php echo CHtml::textField('idinvoice[]','',array('style'=>'width:20px')); ?></td>
             <td><?php  echo CHtml::dropDownList('idmedical[]',$model->idmedical[$i],
-                        Chtml::listData(Traitement::model()->findAllByAttributes(array('idservice'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
+                        Chtml::listData(Traitement::model()->findAllByAttributes(array('type'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
                         array('empty'=>'Select Traitment'));
 
             ?></td>

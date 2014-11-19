@@ -32,7 +32,7 @@ public function accessRules() {
 
 
 		if (isset($_POST['District'])) {
-			$model->setAttributes($_POST['uDistrict']);
+			$model->setAttributes($_POST['District']);
 
 			if ($model->save()) {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())

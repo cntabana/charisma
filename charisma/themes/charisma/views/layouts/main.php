@@ -163,7 +163,7 @@
 						<li class="nav-header hidden-tablet">Main</li>						
 					    <li><a class="ajax-link" href="?r=site/dashboard"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="?r=members/admin"><i class="icon-eye-open"></i><span class="hidden-tablet"> Members</span></a></li>
-						<li><a class="ajax-link" href="?r=beneficaire/admin"><i class="icon-edit"></i><span class="hidden-tablet"> Dependents</span></a></li>
+						<li><a class="ajax-link" href="?r=beneficaire/admin"><i class="icon-edit"></i><span class="hidden-tablet"> Dependants</span></a></li>
 						<li><a class="ajax-link" href="?r=invoice/admin"><i class="icon-globe"></i><span class="hidden-tablet"> Invoice</span></a></li>
                        <li><a href="?r=site/logout"><i class="icon-lock"></i><span class="hidden-tablet"> Logout</span></a></li>
 					</ul>
@@ -179,8 +179,8 @@
 						<li class="nav-header hidden-tablet">Main</li>						
 					    <li><a class="ajax-link" href="?r=site/dashboard"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="?r=members/admin"><i class="icon-eye-open"></i><span class="hidden-tablet"> Members</span></a></li>
-						<li><a class="ajax-link" href="?r=beneficaire/admin"><i class="icon-edit"></i><span class="hidden-tablet"> Dependents</span></a></li>
-						<li><a class="ajax-link" href="?r=drugs/admin"><i class="icon-th"></i><span class="hidden-tablet"> Drugs</span></a></li>
+						<li><a class="ajax-link" href="?r=beneficaire/admin"><i class="icon-edit"></i><span class="hidden-tablet"> Dependants</span></a></li>
+						<li><a class="ajax-link" href="?r=drugs/admin"><i class="icon-th"></i><span class="hidden-tablet"> Pharmacy</span></a></li>
 						<li><a class="ajax-link" href="?r=invoice/admin"><i class="icon-globe"></i><span class="hidden-tablet"> Invoice</span></a></li>
                      
 						<li><a href="?r=site/logout"><i class="icon-lock"></i><span class="hidden-tablet"> Logout</span></a></li>
@@ -217,20 +217,20 @@
 						<li class="nav-header hidden-tablet">Main</li>						
 					    <li><a class="ajax-link" href="?r=site/dashboard"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="?r=members/admin"><i class="icon-eye-open"></i><span class="hidden-tablet"> Members</span></a></li>
-						<li><a class="ajax-link" href="?r=beneficaire/admin"><i class="icon-edit"></i><span class="hidden-tablet"> Dependents</span></a></li>
+						<li><a class="ajax-link" href="?r=beneficaire/admin"><i class="icon-edit"></i><span class="hidden-tablet"> Dependants</span></a></li>
+						<li><a class="ajax-link" href="?r=hospital/admin"><i class="icon-picture"></i><span class="hidden-tablet"> Partner Hospital and Clinics</span></a></li>
 						<li><a class="ajax-link" href="?r=service/admin"><i class="icon-list-alt"></i><span class="hidden-tablet"> Services</span></a></li>
-						<li><a class="ajax-link" href="?r=traitement/admin"><i class="icon-font"></i><span class="hidden-tablet"> Traitements</span></a></li>
-						<li><a class="ajax-link" href="?r=hospital/admin"><i class="icon-picture"></i><span class="hidden-tablet"> Hospitals</span></a></li>
-						<li><a class="ajax-link" href="?r=drugs/admin"><i class="icon-th"></i><span class="hidden-tablet"> Drugs</span></a></li>
+						<li><a class="ajax-link" href="?r=traitement/admin"><i class="icon-font"></i><span class="hidden-tablet"> Medical Acts</span></a></li>
+						<li><a class="ajax-link" href="?r=drugs/admin"><i class="icon-th"></i><span class="hidden-tablet"> Pharmacy</span></a></li>
 						<li><a href="?r=invoice/admin"><i class="icon-globe"></i><span class="hidden-tablet"> Invoice</span></a></li>
 						
 						<li class="nav-header hidden-tablet">Settings</li>
 						<li><a class="ajax-link" href="?r=users/admin"><i class="icon-align-justify"></i><span class="hidden-tablet"> Users</span></a></li>
 						<li><a class="ajax-link" href="?r=backup"><i class="icon-calendar"></i><span class="hidden-tablet"> Backup</span></a></li>
 						<li><a class="ajax-link" href="?r=importcsv"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
-						 <li><a class="ajax-link" href="?r=province/admin"><i class="icon-star"></i><span class="hidden-tablet"> Privince</span></a></li>
-						<li><a href="?r=district/admin"><i class="icon-ban-circle"></i><span class="hidden-tablet"> District</span></a></li>
-						<li><a href="?r=sector/admin"><i class="icon-list-alt"></i><span class="hidden-tablet"> Sector</span></a></li>
+						 <li><a class="ajax-link" href="?r=province/admin"><i class="icon-star"></i><span class="hidden-tablet"> UR</span></a></li>
+						<li><a href="?r=district/admin"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Colleges</span></a></li>
+						<li><a href="?r=sector/admin"><i class="icon-list-alt"></i><span class="hidden-tablet"> Departments</span></a></li>
 						
 						<li><a href="?r=site/logout"><i class="icon-lock"></i><span class="hidden-tablet"> Logout</span></a></li>
 					</ul>
@@ -242,7 +242,7 @@
 					?>
 					<ul class="nav nav-tabs nav-stacked main-menu">
 
-						<li><a class="ajax-link" href="?r=drugs/admin"><i class="icon-th"></i><span class="hidden-tablet"> Drugs</span></a></li>						
+						<li><a class="ajax-link" href="?r=drugs/admin"><i class="icon-th"></i><span class="hidden-tablet"> Pharmacy</span></a></li>						
 						<li><a class="ajax-link" href="?r=invoice/admin"><i class="icon-globe"></i><span class="hidden-tablet"> Invoice</span></a></li>
                       <li><a href="?r=site/logout"><i class="icon-lock"></i><span class="hidden-tablet"> Logout</span></a></li>
 					</ul>

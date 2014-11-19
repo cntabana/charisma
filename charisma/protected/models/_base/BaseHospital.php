@@ -29,7 +29,7 @@ abstract class BaseHospital extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Hospital|Hospitals', $n);
+		return Yii::t('app', 'Partner Hospital and Clinic | Partner Hospitals and Clinics', $n);
 	}
 
 	public static function representingColumn() {

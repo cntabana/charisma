@@ -145,7 +145,7 @@
 		<?php echo $form->labelEx($model,'iddistrict'); ?>
 		<?php
         $district = CHtml::listData(District::model()->findAll(array('order'=>'district')), 'id', 'district');
-		echo CHtml::activeDropDownList($model, 'iddistrict', $district, array('id'=>'id_district','prompt'=>'Select District')); 
+		echo CHtml::activeDropDownList($model, 'iddistrict', $district, array('id'=>'id_district','prompt'=>'Select Colleges')); 
 		?>
 		<?php echo $form->error($model,'iddistrict'); ?>
 		</div><!-- row -->
@@ -155,8 +155,8 @@
 		<?php echo $form->labelEx($model,'idsector'); ?>
 		<?php 
 		$sector= CHtml::listData(Sector::model()->findAll('iddistrict=:iddistrict', array(':iddistrict'=>$model->iddistrict)), 'id', 'sector'); 
-		echo CHtml::activeDropDownList($model, 'idsector', $sector, array('id'=>'id_umurenge','prompt'=>'Select Sector')); 
-		ECascadeDropDown::master('id_district')->setDependent('id_umurenge',array('dependentLoadingLabel'=>'Loading Sectors ...'),'site/citydata'); 
+		echo CHtml::activeDropDownList($model, 'idsector', $sector, array('id'=>'id_umurenge','prompt'=>'Select Department')); 
+		ECascadeDropDown::master('id_district')->setDependent('id_umurenge',array('dependentLoadingLabel'=>'Loading Departments ...'),'site/citydata'); 
 		?>
 		<?php echo $form->error($model,'idsector'); ?>
 		</div><!-- row -->

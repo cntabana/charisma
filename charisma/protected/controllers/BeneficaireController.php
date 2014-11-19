@@ -32,27 +32,39 @@ public function accessRules() {
 	public function actionCreate() {
 		$model = new Beneficaire;
 
+          
+           
+          
+          /* ------------------------- End Image code --------------------------------------- */
 
-		if (isset($_POST['Beneficaire'])) {
+         if (isset($_POST['Beneficaire'])) {
 			/* ------------------------- Image code --------------------------------------- */
 
            $rnd = rand(0,9999);  // generate random number between 0-9999
            $model->setAttributes($_POST['Beneficaire']); //is always in action create
  
             $uploadedFile=CUploadedFile::getInstance($model,'photo');
+            if(empty($uploadedFile)){
+			$fileName = 'default.jpg';
+			$model->photo = $fileName;
+			}
+			else{
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
             $model->photo = $fileName;
+            }
 
           /* ------------------------- End Image code --------------------------------------- */
 
 			if ($model->save()) {
-				$uploadedFile->saveAs(Yii::app()->basePath.'/../pictures/'.$fileName);  // image  
+				if($fileName != 'default.jpg')
+				$uploadedFile->saveAs(Yii::app()->basePath.'/../pictures/'.$fileName);  // image 
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else
 					$this->redirect(array('view', 'id' => $model->id));
 			}
 		}
+
 
 		$this->render('create', array( 'model' => $model));
 	}

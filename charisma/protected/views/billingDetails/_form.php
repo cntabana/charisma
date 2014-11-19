@@ -52,7 +52,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
                     'url'      => $this->createUrl('billingDetails/updateBooster'),
                    // 'source'=>Traitement::model()->findAllAttributes('id', 'medical_act'),
                     //'source'    => Traitement::model()->findAll(), 'id', 'medical_act',
-                    'source'    => Editable::source(Traitement::model()->findAllByAttributes(array('idservice'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
+                    'source'    => Editable::source(Traitement::model()->findAllByAttributes(array('type'=>$_REQUEST['type'],'transfer'=>1)), 'id', 'medical_act'),
 
                    
                   ),

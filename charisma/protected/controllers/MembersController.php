@@ -13,7 +13,7 @@ public function accessRules() {
 
 		 array('allow', 
 				'actions'=>array('admin', 'view','GenerateExcel','GeneratePdf','admin','UpdateBooster','lunette','formulaire','ordonnanceMedicale','analyseDemande'),
-				'expression'=>'$user->groupe == 1 || $user->groupe == 2 ',
+				'expression'=>'$user->groupe == 1 || $user->groupe == 2 || $user->groupe == 4 || $user->groupe == 5',
 				),
 		array('allow', 
 				'actions'=>array('admin', 'view','minicreate', 'index','create', 'update',  'delete','UpdateBooster','lunette','formulaire','ordonnanceMedicale','analyseDemande'),
@@ -41,8 +41,15 @@ public function accessRules() {
            $model->setAttributes($_POST['Members']); //is always in action create
  
             $uploadedFile=CUploadedFile::getInstance($model,'photo');
+           
+           if(empty($uploadedFile)){
+			$fileName = 'default.jpg';
+			$model->photo = $fileName;
+			}
+			else{
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
             $model->photo = $fileName;
+            }
 
           /* ------------------------- End Image code --------------------------------------- */
 
@@ -50,6 +57,7 @@ public function accessRules() {
 
 			if ($model->save()) {
 
+              if($fileName != 'default.jpg')
 				$uploadedFile->saveAs(Yii::app()->basePath.'/../pictures/'.$fileName);  // image 
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();

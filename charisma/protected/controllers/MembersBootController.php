@@ -24,26 +24,22 @@ class MembersBootController extends CController
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+	public function accessRules() {
+	return array(
+
+		 array('allow', 
+				'actions'=>array('admin', 'view','GenerateExcel','GeneratePdf','admin','UpdateBooster','lunette','formulaire','ordonnanceMedicale','analyseDemande'),
+				'expression'=>'$user->groupe == 1 || $user->groupe == 2 || $user->groupe == 4 || $user->groupe == 5',
+				),
+		array('allow', 
+				'actions'=>array('admin', 'view','minicreate', 'index','create', 'update',  'delete','UpdateBooster','lunette','formulaire','ordonnanceMedicale','analyseDemande'),
+				'expression'=>'$user->groupe == 4 || $user->groupe == 5',
+				),
+			array('deny', 
 				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','GeneratePdf','GenerateExcel'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('*'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
+				),
+			);
+}
 
 	/**
 	 * Displays a particular model.
@@ -309,5 +305,10 @@ class MembersBootController extends CController
 		$pdf->writeHTML($html, true, false, true, false, '');
 		$pdf->LastPage();
 		$pdf->Output("MembersBoot_002.pdf", "I");
+	}
+	public function actionUpdateBooster()
+	{
+		    $es = new EditableSaver('MembersBoot');
+			$es->update();
 	}
 }

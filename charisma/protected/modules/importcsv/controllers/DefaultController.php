@@ -62,7 +62,7 @@ class DefaultController extends Controller {
 
     public function actionIndex() {
 	$delimiter = ",";
-	$textDelimiter = ';';
+	$textDelimiter = ";";
 	//publish css and js
 
 	Yii::app()->clientScript->registerCssFile(

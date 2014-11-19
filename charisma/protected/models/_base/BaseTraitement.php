@@ -29,7 +29,7 @@ abstract class BaseTraitement extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Traitement|Traitements', $n);
+		return Yii::t('app', 'Medical Act|Medical Acts', $n);
 	}
 
 	public static function representingColumn() {

@@ -25,7 +25,7 @@ abstract class BaseProvince extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Province|Provinces', $n);
+		return Yii::t('app', 'University of Rwanda|University of Rwanda', $n);
 	}
 
 	public static function representingColumn() {
@@ -54,7 +54,7 @@ abstract class BaseProvince extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'province' => Yii::t('app', 'Province'),
+			'province' => Yii::t('app', 'University of Rwanda'),
 			'districts' => null,
 		);
 	}

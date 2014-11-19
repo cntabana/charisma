@@ -82,20 +82,23 @@ class ImportCsv extends CFormModel
             for($k=0; $k<$linesLength; $k++) {
 
                 // watching all columns in POST
-
+              
                 $n_in = 0;
                 
                 for($i=0; $i<$columnsLength; $i++) {
                     if($columns[$i]!='') {
+
                         if($k == 0) $tableString = ($n!=0) ? $tableString.", ".$tableColumns[$i] : $tableColumns[$i];
 
                         if($k == 0 && $n == 0) $csvString = "(";
                         if($k != 0 && $n_in == 0) $csvString = $csvString."), (";
 
-                        $csvString   = ($n_in!=0) ? $csvString.", '".CHtml::encode(stripslashes($linesArray[$k][$columns[$i]-1]))."'" : $csvString."'".CHtml::encode(stripslashes($linesArray[$k][$columns[$i]-1]))."'";
+                        $csvString   = ($n_in!=0) ? $csvString.", '".CHtml::encode(htmlentities(stripslashes($linesArray[$k][$columns[$i]-1])))."'" : $csvString."'".CHtml::encode(stripslashes($linesArray[$k][$columns[$i]-1]))."'";
                         
                         $n++;
                         $n_in++;
+
+                        //echo $csvString.'<br/>';
                     }
                 }
 
@@ -107,12 +110,15 @@ class ImportCsv extends CFormModel
             
             $sql="INSERT INTO ".$table."(".$tableString.") VALUES ".$csvString."";
             //echo $sql;
+            try{
             $command=Yii::app()->db->createCommand($sql);
 
-            if($command->execute()) 
-                 return (1);
-            else
-                 return (0);
+            $command->execute();
+            }
+             catch (Exception $e)
+        {
+               echo $e->getMessage();
+        }
     }
 
     /*

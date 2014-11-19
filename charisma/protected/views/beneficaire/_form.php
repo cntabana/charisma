@@ -85,13 +85,13 @@
      		<td>
         <div class="row">
 		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->dropDownList($model,'type',array('1'=>'Conjoint','2'=>'Infant'), array('prompt'=>'Select Type')); ?>
+		<?php echo $form->dropDownList($model,'type',array('1'=>'Spouse','2'=>'Child'), array('prompt'=>'Select Category')); ?>
 		<?php echo $form->error($model,'type'); ?>
 		</div><!-- row -->
      		</td>
      		<td>
         <div class="row">
-		<?php echo $form->labelEx($model,'idmember'); ?>
+		<?php echo $form->labelEx($model,'Principal Member *'); ?>
 		<?php echo $form->dropDownList($model, 'idmember', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true))); ?>
 		<?php echo $form->error($model,'idmember'); ?>
 		</div><!-- row -->

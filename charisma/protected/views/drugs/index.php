@@ -19,7 +19,7 @@ $('.search-form form').submit(function(){
 
 ?>
 
-<h1>Drugs</h1>
+<h3>Pharmacy</h3>
 <hr />
 
 <?php 

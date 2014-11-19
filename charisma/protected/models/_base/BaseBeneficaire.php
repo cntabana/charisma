@@ -32,7 +32,7 @@ abstract class BaseBeneficaire extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Dependent|Dependents', $n);
+		return Yii::t('app', 'Dependant|Dependants', $n);
 	}
 
 	public static function representingColumn() {
@@ -74,7 +74,7 @@ abstract class BaseBeneficaire extends GxActiveRecord {
 			'lastname' => Yii::t('app', 'Surnames'),
 			'dateofbirth' => Yii::t('app', 'Date of Birth'),
 			'sex' => Yii::t('app', 'Gender'),
-			'type' => Yii::t('app', 'Type'),
+			'type' => Yii::t('app', 'Category'),
 			'idmember' => null,
 			'idmember0' => null,
 		);

@@ -45,7 +45,7 @@ abstract class BaseMembers extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Members|Members', $n);
+		return Yii::t('app', 'Member|Members', $n);
 	}
 
 	public static function representingColumn() {
@@ -54,11 +54,12 @@ abstract class BaseMembers extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('cardnumber,firstname, lastname, issuedate, expireddate, birthday, sex, iddistrict, idsector, status, type, photo, title', 'required'),
+			array('cardnumber,firstname, lastname, sex, iddistrict, idsector, type', 'required'),
 			array('iddistrict, idsector, status, type', 'numerical', 'integerOnly'=>true),
 			array('cardnumber', 'length', 'max'=>15),
 			array('firstname, middlename, lastname, phonenumber', 'length', 'max'=>20),
 			array('sex', 'length', 'max'=>1),
+			array('issuedate', 'type', 'type'=>'date', 'dateFormat'=>'dd/MM/yy'),
 			array('cardnumber', 'unique'),
 			array('address', 'length', 'max'=>30),
 			array('email, photo', 'length', 'max'=>50),
@@ -86,19 +87,19 @@ abstract class BaseMembers extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 		'id' => Yii::t('app', 'ID'),
-			'cardnumber' => Yii::t('app', 'Membersip Card'),
+			'cardnumber' => Yii::t('app', 'Membersip ID Number'),
 			'firstname' => Yii::t('app', 'Firstname'),
 			'middlename' => Yii::t('app', 'Other Names'),
 			'lastname' => Yii::t('app', 'Surnames'),
-			'issuedate' => Yii::t('app', 'Card Issued Date'),
-			'expireddate' => Yii::t('app', 'Card Expire Date'),
+			'issuedate' => Yii::t('app', 'Card Issue Date'),
+			'expireddate' => Yii::t('app', 'Card Expiration Date'),
 			'birthday' => Yii::t('app', 'Birthday'),
 			'sex' => Yii::t('app', 'Gender'),
 			'phonenumber' => Yii::t('app', 'Phone Number'),
 			'address' => Yii::t('app', 'Address'),
 			'nationality' => Yii::t('app', 'Nationality'),
 			'status' => Yii::t('app', 'Status'),
-			'type' => Yii::t('app', 'Type'),
+			'type' => Yii::t('app', 'Category'),
 			'title' => Yii::t('app', 'Title'),
 			'photo' => Yii::t('app', 'Photo'),
 			'beneficaires' => null,
@@ -168,6 +169,8 @@ return array(
     array('id'=>'0', 'status'=>'Inactive'),
 );
 }
+
+
 static function getStatus($onoff)
 {
 if($onoff == 1) 
@@ -176,7 +179,15 @@ else
     return 'Inactive';
 }
 
+static function getStatusEdit(){
 
+	$status = array(
+      array('value'=>'1', 'text'=>'Active'),
+    array('value'=>'0', 'text'=>'Inactive'),
+    );
+
+    return $status;
+}
 static function getTypes()
 {
 return array(
@@ -192,7 +203,27 @@ else
     return 'Student';
 }
 
+static function getTypeEdit(){
 
+	$type = array(
+     array('value'=>'1', 'text'=>'Staff'),
+    array('value'=>'0', 'text'=>'Student'),
+      
+    );
 
+    return $type;
+}
+
+static function getGender(){
+
+	$gender = array(
+      array('value' => 0, 'text' => 'Male'),
+      array('value' => 1, 'text' => 'Female'),
+      
+    );
+
+    return $gender;
+}
+	
 
 }

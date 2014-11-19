@@ -30,7 +30,7 @@ $this->beginWidget('zii.widgets.CPortlet', array(
 $this->widget('bootstrap.widgets.TbMenu', array(
 	'type'=>'pills',
 	'items'=>array(
-		array('label'=>'Create', 'icon'=>'icon-plus', 'url'=>Yii::app()->controller->createUrl('create'),'visible'=>Yii::app()->user->groupe==1 || Yii::app()->user->groupe==4, 'linkOptions'=>array()),
+		array('label'=>'Create', 'icon'=>'icon-plus', 'url'=>Yii::app()->controller->createUrl('create'),'visible'=>Yii::app()->user->groupe==1 || Yii::app()->user->groupe==4 || Yii::app()->user->groupe==5, 'linkOptions'=>array()),
         array('label'=>'List', 'icon'=>'icon-th-list', 'url'=>Yii::app()->controller->createUrl('index'),'visible'=>!Yii::app()->user->groupe==3 || !Yii::app()->user->groupe==6, 'linkOptions'=>array()),
 		array('label'=>'Manage', 'icon'=>'icon-search', 'url'=>Yii::app()->controller->createUrl('admin'),'active'=>true, 'linkOptions'=>array()),
 		array('label'=>'Export to PDF', 'icon'=>'icon-download', 'url'=>Yii::app()->controller->createUrl('GeneratePdf'), 'linkOptions'=>array('target'=>'_blank'), 'visible'=>true),
@@ -216,7 +216,7 @@ else
 		),
 			array(
 			'class'=>'CButtonColumn',
-			'template' =>'{create}{update}',
+			'template' =>'{create}{update} {view}',
 			'buttons'=>array(
             'create'=>array(
                              'url'=>'Yii::app()->controller->createUrl("billingDetails/create",array("idinvoice"=>$data->id,"type"=>$data->type))',
@@ -227,6 +227,12 @@ else
                              'url'=>'Yii::app()->controller->createUrl("ordonance/create",array("idinvoice"=>$data->id,"type"=>$data->type))',
 							  'imageUrl'=>'../charisma/images/add.png',
 			'visible'=>'$data->type == 3',
+			),
+
+			'view'=>array(
+                             'url'=>'Yii::app()->controller->createUrl("billingDrug/create",array("idinvoice"=>$data->id,"type"=>$data->type))',
+							  'imageUrl'=>'../charisma/images/add.png',
+			'visible'=>'$data->type == 4',
 			),
 				
 	),

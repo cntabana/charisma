@@ -30,7 +30,7 @@ abstract class BaseDrugs extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Drugs|Drugs', $n);
+		return Yii::t('app', 'Pharmacy|Pharmacy', $n);
 	}
 
 	public static function representingColumn() {
